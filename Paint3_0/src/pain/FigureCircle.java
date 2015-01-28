@@ -20,7 +20,7 @@ public class FigureCircle extends SelectFigure
 	{
 		lastX = e.getX();
 		lastY = e.getY();
-		Graphics2D g = (Graphics2D) panel.getGraphics();
+		Graphics2D g = (Graphics2D) panel.sets.image.getGraphics();
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(panel.sets.col);
 		g.setStroke(new BasicStroke(panel.sets.width));
@@ -41,6 +41,7 @@ public class FigureCircle extends SelectFigure
 		{
 			g.drawOval(lastX, firstY, width, height);
 		}
+		panel.repaint();
 	}
 
 }

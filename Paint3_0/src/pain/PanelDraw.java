@@ -1,8 +1,10 @@
 package pain;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
@@ -24,6 +26,7 @@ public class PanelDraw extends JPanel
 
 		sets.mFigure = new FigureFree(this);
 		cmd.draw = this;
+		sets.image = new BufferedImage(400, 600, BufferedImage.TYPE_INT_ARGB);
 		this.addMouseListener(sets.mFigure);
 		this.addMouseMotionListener(sets.mFigure);
 	}
@@ -53,5 +56,12 @@ public class PanelDraw extends JPanel
 			}
 		}
 		addMouseMotionListener(mListener);
+	}
+
+	@Override
+	public void paint(Graphics g)
+	{
+		super.paint(g);
+		g.drawImage(sets.image, 0, 0, null);
 	}
 }

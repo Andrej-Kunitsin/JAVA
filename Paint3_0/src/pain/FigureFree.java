@@ -17,12 +17,13 @@ public class FigureFree extends SelectFigure
 	@Override
 	public void mouseDragged(MouseEvent e)
 	{
-		Graphics2D g = (Graphics2D) panel.getGraphics();
+		Graphics2D g = (Graphics2D) panel.sets.image.getGraphics();
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(panel.sets.col);
 		g.setStroke(new BasicStroke(panel.sets.width));
 		g.drawLine(firstX, firstY, e.getX(), e.getY());
 		firstX = e.getX();
 		firstY = e.getY();
+		panel.repaint();
 	}
 }

@@ -51,8 +51,8 @@ public class PCommands {
 			JFileChooser chooser = new JFileChooser();
 			chooser.showSaveDialog(draw);
 			File file = new File(chooser.getSelectedFile().getAbsolutePath()
-					+ ".bmp");
-			new SaveFile(draw, file);
+					+ ".png");
+			new SaveFile(sets.image, file);
 		}
 	}
 
