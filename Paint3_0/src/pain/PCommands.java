@@ -41,6 +41,7 @@ public class PCommands {
 					"JPG & GIF Images", "jpg", "gif");
 			chooser.setFileFilter(filter);
 			chooser.showOpenDialog(draw);
+			
 			new OpenFile(draw, chooser.getSelectedFile());
 		}
 	}
@@ -51,7 +52,7 @@ public class PCommands {
 			JFileChooser chooser = new JFileChooser();
 			chooser.showSaveDialog(draw);
 			File file = new File(chooser.getSelectedFile().getAbsolutePath()
-					+ ".png");
+					+ ".jpg");
 			new SaveFile(sets.image, file);
 		}
 	}

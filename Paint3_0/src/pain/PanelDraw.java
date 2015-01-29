@@ -26,7 +26,8 @@ public class PanelDraw extends JPanel
 
 		sets.mFigure = new FigureFree(this);
 		cmd.draw = this;
-		sets.image = new BufferedImage(400, 600, BufferedImage.TYPE_INT_ARGB);
+		sets.image = new BufferedImage(400, 600, BufferedImage.TYPE_INT_RGB);
+		sets.image.getGraphics().fillRect(0,0,400, 600);
 		this.addMouseListener(sets.mFigure);
 		this.addMouseMotionListener(sets.mFigure);
 	}

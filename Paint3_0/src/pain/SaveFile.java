@@ -13,7 +13,7 @@ public class SaveFile
 	{
 		try
 		{
-			ImageIO.write(draw, "png", selectedFile);
+			ImageIO.write(draw, "jpg", selectedFile);
 		} catch (IOException io)
 		{
 			io.printStackTrace();
