@@ -1,4 +1,4 @@
-package testSeleniumWebCalc;
+package testJUnitSeleniumWebCalc;
 
 import static org.junit.Assert.assertEquals;
 
