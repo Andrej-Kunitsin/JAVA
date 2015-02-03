@@ -13,23 +13,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class PressedElementTest {
-	static WebDriver driver;
+	static WebDriver driver=AllTests.driver;
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-		// File f = new File("/media/jack_killer/work/MyProgramming/chromedriver");
-		File f = new File("D:\\Programming\\Selenium\\chromedriver_win32\\chromedriver.exe");
-		System.setProperty("webdriver.chrome.driver", f.getAbsolutePath());
-		driver = new ChromeDriver();
-		// driver.get("file:///media/jack_killer/work/MyProgramming/HTML/My%20first%20HTML/Calc.html");
-		driver.get("file:///D:/Programming/HTML/My%20first%20HTML/Calc.html");
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-		driver.close();
-	}
-
+	
 	@Before
 	public void setUp() throws Exception {
 		driver.navigate().refresh();

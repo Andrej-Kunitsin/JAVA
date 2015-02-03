@@ -796,4 +796,13 @@ public class ExListTest {
 		int[] res = xx.getArray();
 		assertArrayEquals(exp, res);
 	}
+	@Test
+	public void testTEMP() {
+		int[] zz = {10,20, 32 };
+		int[] exp = {10,20, 32 ,5};
+		xx.init(zz);
+		xx.addEnd(5);
+		int[] res = xx.getArray();
+		assertArrayEquals(exp, res);
+	}
 }

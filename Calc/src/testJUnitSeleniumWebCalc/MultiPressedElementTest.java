@@ -13,33 +13,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class MultiPressedElementTest {
-	static WebDriver driver;
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-		// File f = new
-		// File("/media/jack_killer/work/MyProgramming/chromedriver");
-		File f = new File(
-				"D:\\Programming\\Selenium\\chromedriver_win32\\chromedriver.exe");
-		System.setProperty("webdriver.chrome.driver", f.getAbsolutePath());
-		driver = new ChromeDriver();
-		// driver.get("file:///media/jack_killer/work/MyProgramming/HTML/My%20first%20HTML/Calc.html");
-		driver.get("file:///D:/Programming/HTML/My%20first%20HTML/Calc.html");
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-		driver.close();
-	}
+public class MultiPressedElementTest
+{
+	static WebDriver driver = AllTests.driver;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws Exception
+	{
 		driver.navigate().refresh();
 	}
 
 	@Test
-	public void testPressedAllNum() {
+	public void testPressedAllNum()
+	{
 		driver.findElement(By.id("bt1")).click();
 		driver.findElement(By.id("bt2")).click();
 		driver.findElement(By.id("bt3")).click();
@@ -55,7 +41,8 @@ public class MultiPressedElementTest {
 	}
 
 	@Test
-	public void testPressedDoubleClick() {
+	public void testPressedDoubleClick()
+	{
 		WebElement el = driver.findElement(By.id("bt1"));
 		el.click();
 		el.click();
@@ -64,7 +51,8 @@ public class MultiPressedElementTest {
 	}
 
 	@Test
-	public void testPressedNum1OpPlus() {
+	public void testPressedNum1OpPlus()
+	{
 		driver.findElement(By.id("bt1")).click();
 		driver.findElement(By.id("btPlus")).click();
 		assertEquals("1+",
@@ -72,7 +60,8 @@ public class MultiPressedElementTest {
 	}
 
 	@Test
-	public void testPressedNum2OpMinus() {
+	public void testPressedNum2OpMinus()
+	{
 		driver.findElement(By.id("bt2")).click();
 		driver.findElement(By.id("btMinus")).click();
 		assertEquals("2-",
@@ -80,7 +69,8 @@ public class MultiPressedElementTest {
 	}
 
 	@Test
-	public void testPressedPlusPlus() {
+	public void testPressedPlusPlus()
+	{
 		driver.findElement(By.id("btPlus")).click();
 		driver.findElement(By.id("btPlus")).click();
 		assertEquals("0+",
