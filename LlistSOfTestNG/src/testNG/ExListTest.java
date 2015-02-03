@@ -8,7 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ExListTestTest extends Assert {
+public class ExListTest extends Assert {
 	ExList xx;
 
 	@BeforeMethod
