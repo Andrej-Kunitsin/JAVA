@@ -16,7 +16,7 @@ public class AList2 implements ExList {
 			throw new NullPointerException();
 		}
 		for (int i = 0; i < a.length; i++) {
-			arr[rear++] = a[i];
+			addEnd(a[i]);
 		}
 	}
 
