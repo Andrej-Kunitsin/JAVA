@@ -134,6 +134,7 @@ public class LList2 implements ExList {
 		if (size() == 1) {
 			flagLength0 = true;
 		} else {
+			root.next.prev = root.prev;
 			root = root.next;
 		}
 	}
