@@ -8,17 +8,14 @@ import listS.LList2;
 
 import org.testng.annotations.Factory;
 
-public class NewTest {
+public class NewTest
+{
 	@Factory
-	public Object[] createInstances() {
-		return new Object[] 
-			{ 
-			new ExListTest(new AList0()),
-			new ExListTest(new AList1()), 
-			new ExListTest(new AList2()), 
-			new ExListTest(new LList1()), 
-			new ExListTest(new LList2()), 
-			};
+	public Object[] createInstances()
+	{
+		return new Object[] { new ExListTest(new AList0()),
+				new ExListTest(new AList1()), new ExListTest(new AList2()),
+				new ExListTest(new LList1()), new ExListTest(new LList2()), };
 
 	}
 }

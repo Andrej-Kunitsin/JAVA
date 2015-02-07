@@ -1,6 +1,7 @@
 package listS;
 
-public interface ExList {
+public interface ExList
+{
 	public void setArray(int[] a);
 
 	public void init(int[] a);

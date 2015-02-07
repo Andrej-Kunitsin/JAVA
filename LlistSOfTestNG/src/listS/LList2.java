@@ -1,14 +1,17 @@
 package listS;
 
-public class LList2 implements ExList {
+public class LList2 implements ExList
+{
 	boolean flagLength0 = false;
 
-	private class Node {
+	private class Node
+	{
 		int data;
 		Node next = null;
 		Node prev = null;
 
-		public Node(int val) {
+		public Node(int val)
+		{
 			data = val;
 		}
 	}
@@ -16,55 +19,69 @@ public class LList2 implements ExList {
 	Node root = null;
 
 	@Override
-	public void setArray(int[] a) {
+	public void setArray(int[] a)
+	{
 		init(a);
 
 	}
 
 	@Override
-	public void init(int[] a) {
-		if (a.length == 0) {
+	public void init(int[] a)
+	{
+		clear();
+		if (a.length == 0)
+		{
 			addStart(0);
 			flagLength0 = true;
-		} else {
-			for (int i = a.length - 1; i >= 0; i--) {
+		} else
+		{
+			for (int i = a.length - 1; i >= 0; i--)
+			{
 				addStart(a[i]);
 			}
 		}
 	}
 
 	@Override
-	public int size() {
+	public int size()
+	{
+		int count = 0;
 		if (flagLength0)
-			return 0;
-		int count = 1;
+		{
+			return count;
+		}
 		Node tmp = root;
-		while (tmp.next != null) {
-			tmp = tmp.next;
+		while (tmp != null)
+		{
 			count++;
+			tmp = tmp.next;
 		}
 		return count;
 	}
 
 	@Override
-	public void clear() {
-		flagLength0 = true;
-		root.data = 0;
-		root.next = null;
-		root.prev = root;
+	public void clear()
+	{
+		flagLength0 = false;
+		root = null;
 	}
 
 	@Override
-	public void addStart(int val) {
-		if (flagLength0) {
+	public void addStart(int val)
+	{
+		if (flagLength0)
+		{
 			root.data = val;
 			flagLength0 = false;
-		} else {
+		} else
+		{
 			Node tmp = new Node(val);
-			if (root == null) {
+			if (root == null)
+			{
 				root = tmp;
 				root.prev = root;
-			} else {
+			} else
+			{
 				tmp.next = root;
 				tmp.prev = root.prev;
 				root.prev = tmp;
@@ -74,17 +91,22 @@ public class LList2 implements ExList {
 	}
 
 	@Override
-	public void addEnd(int val) {
-		if (flagLength0) {
+	public void addEnd(int val)
+	{
+		if (flagLength0)
+		{
 			root.data = val;
 			flagLength0 = false;
-		} else {
+		} else
+		{
 			Node tmp = new Node(val);
-			if (root == null) {
+			if (root == null)
+			{
 				root = tmp;
 				root.prev = root;
 				return;
-			} else {
+			} else
+			{
 				root.prev.next = tmp;
 				tmp.prev = root.prev;
 				root.prev = tmp;
@@ -93,29 +115,39 @@ public class LList2 implements ExList {
 	}
 
 	@Override
-	public void addPos(int pos, int val) {
+	public void addPos(int pos, int val)
+	{
 		int size = size();
 		Node tmp = new Node(val);
 		Node rootTmp;
-		if (pos >= size && !flagLength0) {
+		if (pos >= size && !flagLength0)
+		{
 			throw new IndexOutOfBoundsException();
 		}
-		if (flagLength0) {
+		if (flagLength0)
+		{
 			root.data = val;
 			flagLength0 = false;
-		} else if (pos == 0) {
+		} else if (pos == 0)
+		{
 			addStart(val);
-		} else if (pos == size) {
+		} else if (pos == size)
+		{
 			addEnd(val);
-		} else {
-			if (pos <= size / 2) {
+		} else
+		{
+			if (pos <= size / 2)
+			{
 				rootTmp = root;
-				for (int i = 0; i < pos; i++) {
+				for (int i = 0; i < pos; i++)
+				{
 					rootTmp = rootTmp.next;
 				}
-			} else {
+			} else
+			{
 				rootTmp = root.prev;
-				for (int i = 1; i < size - pos; i++) {
+				for (int i = 1; i < size - pos; i++)
+				{
 					rootTmp = rootTmp.prev;
 				}
 			}
@@ -127,54 +159,72 @@ public class LList2 implements ExList {
 	}
 
 	@Override
-	public void delStart() {
-		if (flagLength0) {
+	public void delStart()
+	{
+		if (flagLength0)
+		{
 			throw new NegativeArraySizeException();
 		}
-		if (size() == 1) {
+		if (size() == 1)
+		{
 			flagLength0 = true;
-		} else {
-			root.next.prev = root.prev;
+		} else
+		{
 			root = root.next;
 		}
 	}
 
 	@Override
-	public void delEnd() {
-		if (flagLength0) {
+	public void delEnd()
+	{
+		if (flagLength0)
+		{
 			throw new NegativeArraySizeException();
 		}
-		if (size() == 1) {
+		if (size() == 1)
+		{
 			flagLength0 = true;
-		} else {
+		} else
+		{
 			root.prev = root.prev.prev;
 			root.prev.next = null;
 		}
 	}
 
 	@Override
-	public void delPos(int pos) {
+	public void delPos(int pos)
+	{
 		int size = size();
-		if (flagLength0) {
+		if (flagLength0)
+		{
 			throw new NegativeArraySizeException();
 		}
-		if (size == 1) {
+		if (size == 1)
+		{
 			flagLength0 = true;
-		} else {
+		} else
+		{
 			Node rootTmp;
-			if (pos == 0) {
+			if (pos == 0)
+			{
 				delStart();
-			} else if (pos == size - 1) {
+			} else if (pos == size - 1)
+			{
 				delEnd();
-			} else {
-				if (pos <= size / 2) {
+			} else
+			{
+				if (pos <= size / 2)
+				{
 					rootTmp = root;
-					for (int i = 0; i < pos; i++) {
+					for (int i = 0; i < pos; i++)
+					{
 						rootTmp = rootTmp.next;
 					}
-				} else {
+				} else
+				{
 					rootTmp = root.prev;
-					for (int i = 1; i < size - pos; i++) {
+					for (int i = 1; i < size - pos; i++)
+					{
 						rootTmp = rootTmp.prev;
 					}
 				}
@@ -185,14 +235,18 @@ public class LList2 implements ExList {
 	}
 
 	@Override
-	public int max() {
-		if (flagLength0) {
+	public int max()
+	{
+		if (flagLength0)
+		{
 			throw new IndexOutOfBoundsException();
 		}
 		Node tmp = root.next;
 		int res = root.data;
-		while (tmp != null) {
-			if (tmp.data > res) {
+		while (tmp != null)
+		{
+			if (tmp.data > res)
+			{
 				res = tmp.data;
 			}
 			tmp = tmp.next;
@@ -201,14 +255,18 @@ public class LList2 implements ExList {
 	}
 
 	@Override
-	public int min() {
-		if (flagLength0) {
+	public int min()
+	{
+		if (flagLength0)
+		{
 			throw new IndexOutOfBoundsException();
 		}
 		Node tmp = root.next;
 		int res = root.data;
-		while (tmp != null) {
-			if (tmp.data < res) {
+		while (tmp != null)
+		{
+			if (tmp.data < res)
+			{
 				res = tmp.data;
 			}
 			tmp = tmp.next;
@@ -217,16 +275,20 @@ public class LList2 implements ExList {
 	}
 
 	@Override
-	public int minIndex() {
-		if (flagLength0) {
+	public int minIndex()
+	{
+		if (flagLength0)
+		{
 			throw new IndexOutOfBoundsException();
 		}
 		Node tmp = root.next;
 		int min = root.data;
 		int count = 1;
 		int res = 0;
-		while (tmp != null) {
-			if (tmp.data < min) {
+		while (tmp != null)
+		{
+			if (tmp.data < min)
+			{
 				min = tmp.data;
 				res = count;
 			}
@@ -237,16 +299,20 @@ public class LList2 implements ExList {
 	}
 
 	@Override
-	public int maxIndex() {
-		if (flagLength0) {
+	public int maxIndex()
+	{
+		if (flagLength0)
+		{
 			throw new IndexOutOfBoundsException();
 		}
 		Node tmp = root.next;
 		int max = root.data;
 		int count = 1;
 		int res = 0;
-		while (tmp != null) {
-			if (tmp.data > max) {
+		while (tmp != null)
+		{
+			if (tmp.data > max)
+			{
 				max = tmp.data;
 				res = count;
 			}
@@ -257,72 +323,100 @@ public class LList2 implements ExList {
 	}
 
 	@Override
-	public void reverse() {
-		if (flagLength0) {
+	public void reverse()
+	{
+		if (flagLength0)
+		{
 			return;
 		}
 		Node temp = root;
 		root = null;
-		while (temp != null) {
+		while (temp != null)
+		{
 			addStart(temp.data);
 			temp = temp.next;
 		}
 	}
 
 	@Override
-	public void sort() {
-		for (int i = size() - 1; i >= 1; i--) {
+	public void sort()
+	{
+		for (int i = size() - 1; i >= 1; i--)
+		{
 			boolean sorted = true;
-			for (int j = 0; j < i; j++) {
-				if (get(j) > get(j + 1)) {
+			for (int j = 0; j < i; j++)
+			{
+				if (get(j) > get(j + 1))
+				{
 					int temp = get(j);
 					set(j, get(j + 1));
 					set(j + 1, temp);
 					sorted = false;
 				}
 			}
-			if (sorted) {
+			if (sorted)
+			{
 				break;
 			}
 		}
 	}
 
 	@Override
-	public int[] toArray() {
-		Node tmp = root;
-		int[] res = new int[size()];
-		for (int i = 0; i < size(); i++) {
-			res[i] = tmp.data;
-			tmp = tmp.next;
+	public int[] toArray()
+	{
+		int[] res;
+		if (flagLength0)
+		{
+			res = new int[0];
+		} else
+		{
+			Node tmp = root;
+			res = new int[size()];
+			int i = 0;
+			while (tmp != null)
+			{
+				res[i++] = tmp.data;
+				tmp = tmp.next;
+			}
 		}
 		return res;
 	}
 
 	@Override
-	public int[] getArray() {
+	public int[] getArray()
+	{
 		return toArray();
 	}
 
 	@Override
-	public void set(int pos, int val) {
-		if (flagLength0) {
+	public void set(int pos, int val)
+	{
+		if (flagLength0)
+		{
 			throw new IndexOutOfBoundsException();
 		}
 		int size = size();
 		Node rootTmp;
-		if (pos == 0) {
+		if (pos == 0)
+		{
 			root.data = val;
-		} else if (pos == size) {
+		} else if (pos == size)
+		{
 			root.prev.data = val;
-		} else {
-			if (pos <= size / 2) {
+		} else
+		{
+			if (pos <= size / 2)
+			{
 				rootTmp = root;
-				for (int i = 0; i < pos; i++) {
+				for (int i = 0; i < pos; i++)
+				{
 					rootTmp = rootTmp.next;
 				}
-			} else {
+			} else
+			{
 				rootTmp = root.prev;
-				for (int i = 1; i < size - pos; i++) {
+				for (int i = 1; i < size - pos; i++)
+				{
 					rootTmp = rootTmp.prev;
 				}
 			}
@@ -331,25 +425,34 @@ public class LList2 implements ExList {
 	}
 
 	@Override
-	public int get(int pos) {
-		if (flagLength0) {
+	public int get(int pos)
+	{
+		if (flagLength0)
+		{
 			throw new IndexOutOfBoundsException();
 		}
 		int size = size();
 		Node rootTmp;
-		if (pos == 0) {
+		if (pos == 0)
+		{
 			return root.data;
-		} else if (pos == size) {
+		} else if (pos == size)
+		{
 			return root.prev.data;
-		} else {
-			if (pos <= size / 2) {
+		} else
+		{
+			if (pos <= size / 2)
+			{
 				rootTmp = root;
-				for (int i = 0; i < pos; i++) {
+				for (int i = 0; i < pos; i++)
+				{
 					rootTmp = rootTmp.next;
 				}
-			} else {
+			} else
+			{
 				rootTmp = root.prev;
-				for (int i = 1; i < size - pos; i++) {
+				for (int i = 1; i < size - pos; i++)
+				{
 					rootTmp = rootTmp.prev;
 				}
 			}
