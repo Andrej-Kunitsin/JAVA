@@ -212,7 +212,7 @@ public class AList1 implements ExList {
 
 	@Override
 	public void clear() {
-		init(new int[0]);
+		index = 0;
 	}
 
 	@Override

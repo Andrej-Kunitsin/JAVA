@@ -20,7 +20,7 @@ public class AList1 implements ExList {
 			throw new NullPointerException();
 		}
 		for (int i = 0; i < arr.length; i++) {
-			this.arr[i] = arr[i];
+			addEnd(arr[i]);
 		}
 		index = arr.length;
 	}

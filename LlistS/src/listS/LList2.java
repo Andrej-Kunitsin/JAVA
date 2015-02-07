@@ -49,9 +49,10 @@ public class LList2 implements ExList {
 	@Override
 	public void clear() {
 		flagLength0 = true;
-		root.data = 0;
-		root.next = null;
-		root.prev = root;
+		//root.data = 0;
+		//root.next = null;
+		//root.prev = root;
+		root = null;
 	}
 
 	@Override

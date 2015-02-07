@@ -11,14 +11,14 @@ import org.testng.annotations.Test;
 public class ExListTest extends Assert {
 	ExList xx;
 
-	@BeforeMethod
-	public void BeforeMethod() {
-		xx = new LList1();
+	public ExListTest(ExList exList) {
+		xx=exList;
 	}
 
+	
 	@AfterMethod
 	public void AfterMethod() {
-		xx = null;
+		xx.clear();
 	}
 
 	@Test(expectedExceptions = NullPointerException.class)
