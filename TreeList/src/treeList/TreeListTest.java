@@ -251,19 +251,93 @@ public class TreeListTest
 		assertEquals(ex, tree.toString());
 	}
 
+	@Test
+	public final void testCountLeafs_Null()
+	{
+		int[] inArray = null;
+		tree.init(inArray);
+		assertEquals(0, tree.countLeafs());
+	}
+	@Test
+	public final void testCountLeafs_0()
+	{
+		int[] inArray = {};
+		tree.init(inArray);
+		assertEquals(0, tree.countLeafs());
+	}
+	@Test
+	public final void testCountLeafs_1()
+	{
+		int[] inArray = {5};
+		tree.init(inArray);
+		assertEquals(1, tree.countLeafs());
+	}
+	@Test
+	public final void testCountLeafs_2l()
+	{
+		int[] inArray = {5,1};
+		tree.init(inArray);
+		assertEquals(1, tree.countLeafs());
+	}
+	@Test
+	public final void testCountLeafs_2r()
+	{
+		int[] inArray = {1,5};
+		tree.init(inArray);
+		assertEquals(1, tree.countLeafs());
+	}
+	@Test
+	public final void testCountLeafs_Many()
+	{
+		int[] inArray = {10,5,15,22,1,6};
+		tree.init(inArray);
+		assertEquals(3, tree.countLeafs());
+	}
 	
 	@Test
-	public final void testCountLeafs()
+	public final void testCountNodes_Null()
 	{
-		
+		int[] inArray = null;
+		tree.init(inArray);
+		assertEquals(0, tree.countNodes());
 	}
-
 	@Test
-	public final void testCountNodes()
+	public final void testCountNodes_0()
 	{
-		fail("Not yet implemented");
+		int[] inArray = {};
+		tree.init(inArray);
+		assertEquals(0, tree.countNodes());
 	}
-
+	@Test
+	public final void testCountNodes_1()
+	{
+		int[] inArray = {5};
+		tree.init(inArray);
+		assertEquals(0, tree.countNodes());
+	}
+	@Test
+	public final void testCountNodes_2l()
+	{
+		int[] inArray = {5,1};
+		tree.init(inArray);
+		assertEquals(1, tree.countNodes());
+	}
+	@Test
+	public final void testCountNodes_2r()
+	{
+		int[] inArray = {1,5};
+		tree.init(inArray);
+		assertEquals(1, tree.countNodes());
+	}
+	@Test
+	public final void testCountNodes_Many()
+	{
+		int[] inArray = {10,5,15,22,1,6,4};
+		tree.init(inArray);
+		assertEquals(4, tree.countNodes());
+	}
+	
+	
 	@Test
 	public final void testWidth()
 	{
