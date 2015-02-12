@@ -1,5 +1,8 @@
 package treeList;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BsTree implements TreeInterface
 {
 
@@ -77,24 +80,26 @@ public class BsTree implements TreeInterface
 	@Override
 	public int[] toArray()
 	{
+		List<Integer> list = new ArrayList<Integer>();
 		if (root == null || size() == 0)
 		{
-			arr = new int[0];
+
 		} else
 		{
-			arr = new int[size()];
-			toArray(root);
+			list = toArray(root, list);
 		}
-		return arr;
+		int[] q = list.toArray(new Integer[list.size()]);
+		return q;
 	}
 
-	private void toArray(Node p)
+	private List<Integer> toArray(Node p, List<Integer> list)
 	{
 		if (p == null)
-			return;
-		toArray(p.left);
-		arr[index++] = p.data;
-		toArray(p.rigth);
+			return list;
+		list = toArray(p.left, list);
+		list.add(p.data);
+		list = toArray(p.rigth, list);
+		return list;
 	}
 
 	@Override
