@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +13,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
-public class MyMain
-{
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException
-	{
+public class MyMain {
+	public static void main(String[] args) throws ParserConfigurationException {
 		List<Person> list = new ArrayList<Person>();
 		list.add(new Person(1, "Dash1", "Solo1", 10));
 		list.add(new Person(2, "Dash2", "Solo2", 20));
@@ -25,14 +24,16 @@ public class MyMain
 		list.add(new Person(6, "Dash6", "Solo6", 60));
 		list.add(new Person(7, "Dash7", "Solo7", 70));
 		list.add(new Person(8, "Dash8", "Solo8", 80));
+
+		File f = new File("D:\\my.xml");
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = null;
 		Document doc = null;
-			db = dbf.newDocumentBuilder();
-			doc = db.parse("/media/jack_killer/work/qqq.xml");
-		Element q =(Element) doc.getDocumentElement();
-		Elements Q=  (Elements) q.getAttributes();
-		System.out.println(Q);
+		db = dbf.newDocumentBuilder();
+		doc= db.newDocument();
+		Element e = doc.getDocumentElement();
+		e.setTextContent("root");
+		System.out.println(e.getNodeValue());
 	}
 
 }
