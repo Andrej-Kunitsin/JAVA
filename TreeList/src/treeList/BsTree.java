@@ -143,27 +143,29 @@ public class BsTree implements TreeInterface {
 
 	@Override
 	public int width() {
+		
+		return 0;
+	}
+
+
+	@Override
+	public int height() {
 		int countWidth = 0;
-		List<Integer> list = new ArrayList<Integer>();
 		if (root == null) {
 			return countWidth;
 		} else {
-			list = width(root);
+			countWidth = height(root);
 		}
 		return countWidth;
 	}
 
-	private List<Integer> width(Node p) {
-		List <Integer> list = new ArrayList<Integer>();
-		if(p==null)return 0;
-		
-		return list;
-	}
+	private int height(Node p) {
+		if (p == null)
+			return 0;
+		int leftHeight = height(p.left);
+		int rigthHeight = height(p.rigth);
 
-	@Override
-	public int height() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Math.max(leftHeight, rigthHeight)+1;
 	}
 
 	@Override
