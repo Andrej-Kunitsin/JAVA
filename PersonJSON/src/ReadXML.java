@@ -24,19 +24,68 @@ import org.xml.sax.SAXException;
 
 public class ReadXML
 {
-	static Document doc = null;
+	static Person p;
+	static List<Person> list = new ArrayList<Person>();
+	static Document doc;
 
-	public static void main(String[] args) throws ParserConfigurationException,
-			TransformerException, SAXException, IOException
+	public static void main(String[] args)
 	{
-		List<Person> list = new ArrayList<Person>();
 
 		File f = new File("/media/jack_killer/work/my.xml");
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		DocumentBuilder db = null;
-		db = dbf.newDocumentBuilder();
-		doc = db.parse(f);
-		Element e = doc.getDocumentElement();
-		NodeList personListNodes = e.getElementsByTagName("person");
+		try
+		{
+			doc = parserXML(f);
+			reader(doc, 0);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		for (Person person : list)
+		{
+			System.out.println(person.toString());
+		}
+	}
+
+	private static void reader(Node node, int level)
+	{
+		NodeList nl = node.getChildNodes();
+		String parent = "";
+		String txt = "";
+		for (int i = 0; i < nl.getLength(); i++)
+		{
+			if (nl.item(i).getNodeType() == Node.TEXT_NODE)
+			{
+				parent = nl.item(i).getParentNode().getNodeName();
+				if (parent.equals("FName"))
+				{
+					p.setFName(nl.item(i).getNodeValue());
+				}
+				if (parent.equals("LName"))
+				{
+					p.setLName(nl.item(i).getNodeValue());
+				}
+				if (parent.equals("Age"))
+				{
+					p.setAge(Integer.parseInt(nl.item(i).getNodeValue()));
+				}
+			} else
+			{
+				if (nl.item(i).getNodeName().equals("person"))
+				{
+					p = new Person();
+					p.setId(Integer.parseInt(nl.item(i).getAttributes().item(0)
+							.getNodeValue()));
+					list.add(p);
+				}
+			}
+			reader(nl.item(i), level + 1);
+		}
+	}
+
+	public static Document parserXML(File file) throws SAXException,
+			IOException, ParserConfigurationException
+	{
+		return DocumentBuilderFactory.newInstance().newDocumentBuilder()
+				.parse(file);
 	}
 }
