@@ -50,7 +50,6 @@ public class ReadXML
 	{
 		NodeList nl = node.getChildNodes();
 		String parent = "";
-		String txt = "";
 		for (int i = 0; i < nl.getLength(); i++)
 		{
 			if (nl.item(i).getNodeType() == Node.TEXT_NODE)
