@@ -17,9 +17,11 @@ public class Main {
 		list.add(new Person(7, "Dash7", "Solo7", 70));
 		list.add(new Person(8, "Dash8", "Solo8", 80));
 		Serializ s = new Serializ();
-		// s.saveInFile(new File("D:\\qwe.xml"));
-		s.saveInFile(new File("D:\\qwe.json"), list);
-
+		// s.saveInFile(new File("/home/jack_killer/qwe.xml"),list);
+		//s.saveInFile(new File("/home/jack_killer/qwe.json"),list);
+		//s.getListOfXML(new File("/home/jack_killer/qwe.xml"));
+		s.getListOfJSON(new File("/home/jack_killer/qwe.json"));
+		
 	}
 
 }
