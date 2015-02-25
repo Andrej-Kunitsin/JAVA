@@ -4,12 +4,14 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileFilter;
 
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class PCommands {
+public class PCommands
+{
 	FSets sets = null;
 	PanelDraw draw;
 
@@ -33,23 +35,28 @@ public class PCommands {
 	OpenCmd openFile = new OpenCmd();
 	SaveCmd saveFile = new SaveCmd();
 
-	class OpenCmd implements ActionListener {
+	class OpenCmd implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e)
+		{
 			JFileChooser chooser = new JFileChooser();
 			FileNameExtensionFilter filter = new FileNameExtensionFilter(
 					"JPG & GIF Images", "jpg", "gif");
 			chooser.setFileFilter(filter);
 			chooser.showOpenDialog(draw);
-			
+
 			new OpenFile(draw, chooser.getSelectedFile());
 		}
 	}
 
-	class SaveCmd implements ActionListener {
+	class SaveCmd implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e)
+		{
 			JFileChooser chooser = new JFileChooser();
+			
 			chooser.showSaveDialog(draw);
 			File file = new File(chooser.getSelectedFile().getAbsolutePath()
 					+ ".jpg");
@@ -57,72 +64,92 @@ public class PCommands {
 		}
 	}
 
-	class ColorCmd implements ActionListener {
+	class ColorCmd implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.col = JColorChooser.showDialog(null, "Select Color", sets.col);
 		}
 	}
 
-	class ColorCmdRed implements ActionListener {
+	class ColorCmdRed implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.col = Color.red;
 		}
 	}
 
-	class ColorCmdGreen implements ActionListener {
+	class ColorCmdGreen implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.col = Color.green;
 		}
 	}
 
-	class ColorCmdBlue implements ActionListener {
+	class ColorCmdBlue implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.col = Color.blue;
 		}
 	}
 
-	class WidthCmd_1 implements ActionListener {
+	class WidthCmd_1 implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.width = 1;
 		}
 	}
 
-	class WidthCmd_3 implements ActionListener {
+	class WidthCmd_3 implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.width = 3;
 		}
 	}
 
-	class WidthCmd_5 implements ActionListener {
+	class WidthCmd_5 implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.width = 5;
 		}
 	}
 
-	class WidthCmd_7 implements ActionListener {
+	class WidthCmd_7 implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.width = 7;
 		}
 	}
 
-	class WidthCmd_10 implements ActionListener {
+	class WidthCmd_10 implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.width = 10;
 		}
 	}
 
-	class Rectangle implements ActionListener {
+	class Rectangle implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.mFigure = new FigureRect(draw);
 			draw.addMListener(sets.mFigure);
 			draw.addMyMotionListener(sets.mFigure);
@@ -130,36 +157,44 @@ public class PCommands {
 		}
 	}
 
-	class Circle implements ActionListener {
+	class Circle implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.mFigure = new FigureCircle(draw);
 			draw.addMListener(sets.mFigure);
 			draw.addMyMotionListener(sets.mFigure);
 		}
 	}
 
-	class Triangle implements ActionListener {
+	class Triangle implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.mFigure = new FigureTriangl(draw);
 			draw.addMListener(sets.mFigure);
 			draw.addMyMotionListener(sets.mFigure);
 		}
 	}
 
-	class FRectangle implements ActionListener {
+	class FRectangle implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.mFigure = new FigureFRect(draw);
 			draw.addMListener(sets.mFigure);
 			draw.addMyMotionListener(sets.mFigure);
 		}
 	}
 
-	class Free implements ActionListener {
+	class Free implements ActionListener
+	{
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent arg0)
+		{
 			sets.mFigure = new FigureFree(draw);
 			draw.addMListener(sets.mFigure);
 			draw.addMyMotionListener(sets.mFigure);
