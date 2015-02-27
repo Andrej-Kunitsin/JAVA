@@ -5,5 +5,6 @@ import java.util.List;
 public class Sets
 {
 	Figures mFigure = Figures.Cicle;
-	List<PanelFigure> list;
+	public List<PanelFigure> list;
+	PanelDraw panelDraw;
 }

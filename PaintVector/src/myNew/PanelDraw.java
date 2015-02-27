@@ -15,18 +15,13 @@ public class PanelDraw extends JPanel implements MouseListener
 
 	public PanelDraw(Sets sets)
 	{
+		sets.list = new ArrayList<PanelFigure>();
+		sets.panelDraw = this;
 		this.sets = sets;
-		this.sets.list = new ArrayList<PanelFigure>();
+
 		setLayout(null);
 		setBackground(Color.yellow);
 		addMouseListener(this);
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e)
-	{
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -46,18 +41,13 @@ public class PanelDraw extends JPanel implements MouseListener
 		sets.list.add(0, panel);
 		add(panel);
 		repaint();
-		// panel = null;
 	}
 
 	@Override
-	public void paint(Graphics g)
+	public void mouseClicked(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
-		super.paint(g);
-		for (PanelFigure pf : sets.list)
-		{
-			add(pf);
-		}
+	
 	}
 
 	@Override
@@ -72,5 +62,15 @@ public class PanelDraw extends JPanel implements MouseListener
 	{
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	protected void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		for (PanelFigure pf : sets.list)
+		{
+			add(pf);
+		}
 	}
 }
