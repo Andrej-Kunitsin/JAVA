@@ -108,7 +108,7 @@ public class PanelFigure extends JPanel implements MouseListener,MouseMotionList
 		startX += e.getX()-xDelta;
 		startY += e.getY()-yDelta;
 		createPanel();
-		sets.panelDraw.repaint();
+		//sets.panelDraw.repaint();
 	}
 
 	@Override

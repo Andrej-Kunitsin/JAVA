@@ -20,14 +20,14 @@ public class Menu extends JMenuBar
 	JMenuItem itemLoad;
 	JMenuItem itemSave;
 	JMenuItem itemClose;
-
+	
 	public Menu(final Sets sets)
 	{
 		jMenu = new JMenu("File");
 
 		itemLoad = new JMenuItem("Load");
 		itemSave = new JMenuItem("Save");
-		itemClose = new JMenuItem("Close");
+		itemClose = new JMenuItem("Exit");
 
 		jMenu.add(itemLoad);
 		jMenu.add(itemSave);
@@ -35,6 +35,7 @@ public class Menu extends JMenuBar
 		jMenu.add(itemClose);
 
 		add(jMenu);
+		
 		itemLoad.addActionListener(new ActionListener()
 		{
 			Serializ serializ = new Serializ();
@@ -73,6 +74,7 @@ public class Menu extends JMenuBar
 				if (r == JFileChooser.APPROVE_OPTION)
 				{
 					FileFilter ff = fileChooser.getFileFilter();
+					System.out.println(ff.getDescription());
 					String format = "";
 					File file;
 					switch (ff.getDescription())
@@ -92,8 +94,23 @@ public class Menu extends JMenuBar
 						serializ = new Serializ();
 						serializ.saveXML(file, sets.list);
 						break;
+					case "All Files":
+						file = fileChooser.getSelectedFile();
+						if (file.getAbsolutePath().endsWith(".xml"))
+						{
+							serializ = new Serializ();
+							serializ.saveXML(file, sets.list);
+						} else if (file.getAbsolutePath().endsWith(".json"))
+						{
+							serializ = new Serializ();
+							serializ.saveJSON(file, sets.list);
+						} else
+						{
+							throw new IllegalArgumentException();
+						}
 					}
 				}
+				
 			}
 		});
 
