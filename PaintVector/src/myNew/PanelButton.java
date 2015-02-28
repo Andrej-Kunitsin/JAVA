@@ -10,19 +10,25 @@ public class PanelButton extends JPanel implements ActionListener
 {
 	JButton buttonRect;
 	JButton buttonOval;
+	JButton buttonClear;
 	Sets sets;
 
 	public PanelButton(Sets sets)
 	{
 		this.sets = sets;
+		setLayout(null);
 		buttonRect = new JButton("Квадрат");
 		buttonOval = new JButton("Овал");
+		buttonClear = new JButton("Очистка");
 		buttonRect.setBounds(10, 10, 100, 50);
 		buttonOval.setBounds(10, 70, 100, 50);
+		buttonClear.setBounds(10, 130,100, 50);
 		add(buttonRect);
 		add(buttonOval);
+		add(buttonClear);
 		buttonRect.addActionListener(this);
 		buttonOval.addActionListener(this);
+		buttonClear.addActionListener(this);
 	}
 
 	@Override
@@ -34,6 +40,13 @@ public class PanelButton extends JPanel implements ActionListener
 		} else if (e.getActionCommand().equals("Овал"))
 		{
 			sets.mFigure = Figures.Cicle;
+		}else if (e.getActionCommand().equals("Очистка")){
+			//sets.list.clear();
+			sets.list.remove(0);
+			sets.panelDraw.removeAll();
+			sets.panelDraw.revalidate();
+			sets.panelDraw.repaint();
+				
 		}
 	}
 }
