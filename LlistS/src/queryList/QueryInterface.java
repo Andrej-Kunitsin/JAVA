@@ -2,16 +2,16 @@ package queryList;
 
 public interface QueryInterface
 {
-	void init(Object[] arr);
+	void init(int [] arr);
 
-	void add(Object o);
+	void add(int val);
 
-	void del();
+	int del();
 
 	int size();
 
 	void clear();
 
-	Object[] toArray();
+	int [] toArray();
 
 }

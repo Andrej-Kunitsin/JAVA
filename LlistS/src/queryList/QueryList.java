@@ -1,69 +1,69 @@
 package queryList;
 
-import java.util.Iterator;
-
-public class QueryList implements QueryInterface, Iterator<Object>
+public class QueryList implements QueryInterface
 {
-	Object[] object;
+	int[] arr;
 
 	@Override
-	public void init(Object[] arr)
+	public void init(int[] array)
+	{
+		arr = array;
+	}
+
+	@Override
+	public void add(int val)
 	{
 		if (arr == null)
 		{
 			throw new NullPointerException();
 		}
-		clear();
+		int[] tmp = new int[arr.length + 1];
 		for (int i = 0; i < arr.length; i++)
 		{
-			object[i] = arr[i];
+			tmp[i] = arr[i];
 		}
+		tmp[tmp.length - 1] = val;
+		arr = tmp;
 	}
 
 	@Override
-	public void add(Object o)
+	public int del()
 	{
-		Object[] newArr = new Object[object.length + 1];
-		for (int i = 0; i < object.length; i++)
+		if (arr == null || arr.length == 0)
 		{
-			newArr[i] = object[i];
+			throw new NullPointerException();
 		}
-		newArr[newArr.length - 1] = o;
-		object = newArr;
-	}
-
-	@Override
-	public void del()
-	{
-		Object[] tmp = new Object[size() - 1];
-		for (int i = 1; i < object.length; i++)
+		int res = arr[0];
+		int[] tmp = new int[arr.length - 1];
+		for (int i = 0; i < tmp.length; i++)
 		{
-			tmp[i] = object[i];
-			object = tmp;
+			tmp[i] = arr[i + 1];
 		}
+		arr = tmp;
+		return res;
 	}
 
 	@Override
 	public int size()
 	{
-		return object.length;
+		return arr.length;
 	}
 
 	@Override
 	public void clear()
 	{
-		object = null;
+		arr = null;
 	}
 
 	@Override
-	public Object[] toArray()
+	public int[] toArray()
 	{
-		return object;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	int iter = 0;
 
-	@Override
 	public boolean hasNext()
 	{
 		boolean res = false;
@@ -74,13 +74,11 @@ public class QueryList implements QueryInterface, Iterator<Object>
 		return res;
 	}
 
-	@Override
 	public Object next()
 	{
-		return object[iter++];
+		return arr[iter++];
 	}
 
-	@Override
 	public void remove()
 	{
 		iter = 0;
