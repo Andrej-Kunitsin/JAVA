@@ -37,7 +37,7 @@ public class PanelDraw extends JPanel implements MouseListener
 	{
 		panel.setWidth(e.getX());
 		panel.setHeight(e.getY());
-		panel.createPanel();
+		panel.setBounds(panel.startX, panel.startY, panel.width, panel.height);
 		sets.list.add(0, panel);
 		add(panel);
 		repaint();
@@ -46,27 +46,21 @@ public class PanelDraw extends JPanel implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
-	
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	protected void paintComponent(Graphics g)
-	{	
+	{
 		super.paintComponent(g);
 		for (PanelFigure pf : sets.list)
 		{

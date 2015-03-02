@@ -22,7 +22,7 @@ public class PanelButton extends JPanel implements ActionListener
 		buttonClear = new JButton("Очистка");
 		buttonRect.setBounds(10, 10, 100, 50);
 		buttonOval.setBounds(10, 70, 100, 50);
-		buttonClear.setBounds(10, 130,100, 50);
+		buttonClear.setBounds(10, 130, 100, 50);
 		add(buttonRect);
 		add(buttonOval);
 		add(buttonClear);
@@ -40,13 +40,17 @@ public class PanelButton extends JPanel implements ActionListener
 		} else if (e.getActionCommand().equals("Овал"))
 		{
 			sets.mFigure = Figures.Cicle;
-		}else if (e.getActionCommand().equals("Очистка")){
-			//sets.list.clear();
-			sets.list.remove(0);
-			sets.panelDraw.removeAll();
-			sets.panelDraw.revalidate();
-			sets.panelDraw.repaint();
-				
+		} else if (e.getActionCommand().equals("Очистка"))
+		{
+			// sets.list.clear();
+			if (sets.list.size() != 0)
+			{
+				sets.list.remove(0);
+				sets.panelDraw.removeAll();
+				sets.panelDraw.revalidate();
+				sets.panelDraw.repaint();
+			}
+
 		}
 	}
 }

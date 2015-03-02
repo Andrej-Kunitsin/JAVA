@@ -7,31 +7,27 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JPanel;
 
-public class PanelFigure extends JPanel implements MouseListener,MouseMotionListener
+public class PanelFigure extends JPanel implements MouseListener,
+		MouseMotionListener
 {
 	public int startX;
 	public int startY;
 	public int width;
 	public int height;
 	public Figures fig;
-	private int xDelta=0;
-	private int yDelta=0;
-	private Sets sets;
+	private int xDelta = 0;
+	private int yDelta = 0;
+
 	public PanelFigure()
 	{
 	}
 
 	public PanelFigure(Sets sets)
 	{
-		this.sets = sets;
 		fig = sets.mFigure;
-		 setOpaque(false);
+		setOpaque(false);
 		addMouseListener(this);
 		addMouseMotionListener(this);
-	}
-	public void createPanel()
-	{
-		setBounds(startX, startY, width, height);
 	}
 
 	public int getStartX()
@@ -105,44 +101,33 @@ public class PanelFigure extends JPanel implements MouseListener,MouseMotionList
 	@Override
 	public void mouseDragged(MouseEvent e)
 	{
-		startX += e.getX()-xDelta;
-		startY += e.getY()-yDelta;
-		createPanel();
-		//sets.panelDraw.repaint();
+		startX += e.getX() - xDelta;
+		startY += e.getY() - yDelta;
+		setBounds(startX, startY, width, height);
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
-		
 	}
 }

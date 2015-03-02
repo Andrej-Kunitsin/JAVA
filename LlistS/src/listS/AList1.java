@@ -37,6 +37,12 @@ public class AList1 implements ExList
 	}
 
 	@Override
+	public void addEnd(int val)
+	{
+		arr[index++] = val;
+	}
+
+	@Override
 	public int[] getArray()
 	{
 		int[] temp = new int[index];
@@ -163,12 +169,6 @@ public class AList1 implements ExList
 				break;
 			}
 		}
-	}
-
-	@Override
-	public void addEnd(int val)
-	{
-		arr[index++] = val;
 	}
 
 	@Override
