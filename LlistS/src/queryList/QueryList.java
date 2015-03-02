@@ -58,8 +58,7 @@ public class QueryList implements QueryInterface
 	@Override
 	public int[] toArray()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return arr;
 	}
 
 	int iter = 0;
