@@ -9,7 +9,7 @@ import javax.swing.table.TableModel;
 
 import api.CRUD;
 
-public class MyDataModel extends AbstractTableModel implements TableModel
+public class MyDataModel extends AbstractTableModel 
 {
 
 	private ArrayList columnNames = new ArrayList();
@@ -117,4 +117,5 @@ public class MyDataModel extends AbstractTableModel implements TableModel
 			}
 		}
 	}
+	
 }

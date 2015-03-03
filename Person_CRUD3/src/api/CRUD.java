@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.List;
 
 public class CRUD
 {
@@ -12,7 +14,7 @@ public class CRUD
 	private Connection conn;
 	public String query = "";
 
-	public void getConn()
+	public void getConnection()
 	{
 		try
 		{
@@ -42,13 +44,13 @@ public class CRUD
 
 	public Statement getStatement()
 	{
-		getConn();
+		getConnection();
 		return st;
 	}
 
 	public void createPerson(Person p) throws SQLException
 	{
-		getConn();
+		getConnection();
 		query = "INSERT INTO person VALUES(" + p.getId() + ",'" + p.getFName()
 				+ "','" + p.getLName() + "'," + p.getAge() + ")";
 
@@ -56,23 +58,18 @@ public class CRUD
 		closeConnection();
 	}
 
-	public Person[] readAllPerson() throws SQLException
+	public List<Person>readAllPerson() throws SQLException
 	{
-		getConn();
-		Person[] personArr = null;
+		getConnection();
+		List<Person> personList = new LinkedList<Person>();
 		try
 		{
 			ResultSet rs = st.executeQuery("Select * from Person");
-			rs.last();
-			int i = rs.getRow();
-			rs.first();
-			personArr = new Person[i];
-			i = 0;
 			do
 			{
 				Person p = new Person(rs.getInt(1), rs.getString(2),
 						rs.getString(3), rs.getInt(4));
-				personArr[i++] = p;
+				personList.add(p);
 			} while (rs.next());
 
 		} catch (Exception e)
@@ -82,12 +79,12 @@ public class CRUD
 		{
 			closeConnection();
 		}
-		return personArr;
+		return personList;
 	}
 
 	public void updatePerson(Person p) throws SQLException
 	{
-		getConn();
+		getConnection();
 		query = "Update Person set Fname = '" + p.getFName() + "',Lname = '"
 				+ p.getLName() + "',Age = " + p.getAge() + " where id="
 				+ p.getId();
@@ -101,7 +98,7 @@ public class CRUD
 	}
 	public void deletePerson(int id) throws SQLException
 	{
-		getConn();
+		getConnection();
 		query = "Delete From Person where id=" + id;
 		st.execute(query);
 		closeConnection();

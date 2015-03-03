@@ -12,6 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import api.CRUD;
 import api.Person;
@@ -32,6 +37,9 @@ public class PanelPerson extends JPanel
 		dataModel = new MyDataModel();
 		table = new JTable(dataModel);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		//table.setAutoCreateRowSorter( true );
+		TableRowSorter<TableModel>rowSorter = new TableRowSorter<TableModel>(table.getModel());
+		table.setRowSorter(rowSorter);
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(5, 5, 600, 150);
 
