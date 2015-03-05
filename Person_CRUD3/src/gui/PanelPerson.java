@@ -19,13 +19,15 @@ import comporators.PersonByFName;
 import comporators.PersonById;
 import comporators.PersonByLName;
 
-public class PanelPerson extends JPanel {
+public class PanelPerson extends JPanel
+{
 	private static final long serialVersionUID = 1L;
 	JTable table;
 	JScrollPane scrollPane;
 	List<Person> list;
 
-	public PanelPerson() {
+	public PanelPerson()
+	{
 		list = new ArrayList<Person>();
 		list.add(new Person(8, "Aash1", "Solo1", 44));
 		list.add(new Person(2, "2Dash1", "Solo1", 22));
@@ -35,18 +37,22 @@ public class PanelPerson extends JPanel {
 		list.add(new Person(7, "6Dash1", "Solo1", 66));
 		list.add(new Person(8, "7Dash1", "Solo1", 77));
 
-		table = new JTable(new MyModel(list));
+		MyModel mModel = new MyModel(list);
+		table = new JTable(mModel);
 		scrollPane = new JScrollPane(table);
 		table.setPreferredScrollableViewportSize(new Dimension(600, 400));
 		add(scrollPane);
 		JTableHeader header = table.getTableHeader();
-		header.addMouseListener(new MouseListener() {
+		header.addMouseListener(new MouseListener()
+		{
 
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent arg0)
+			{
 				int i = table.columnAtPoint(arg0.getPoint());
 				String string = table.getColumnName(i);
-				switch (string) {
+				switch (string)
+				{
 				case "Id":
 					Collections.sort(list, new PersonById());
 					break;
@@ -66,19 +72,23 @@ public class PanelPerson extends JPanel {
 			}
 
 			@Override
-			public void mouseReleased(MouseEvent arg0) {
+			public void mouseReleased(MouseEvent arg0)
+			{
 			}
 
 			@Override
-			public void mousePressed(MouseEvent arg0) {
+			public void mousePressed(MouseEvent arg0)
+			{
 			}
 
 			@Override
-			public void mouseExited(MouseEvent arg0) {
+			public void mouseExited(MouseEvent arg0)
+			{
 			}
 
 			@Override
-			public void mouseEntered(MouseEvent arg0) {
+			public void mouseEntered(MouseEvent arg0)
+			{
 			}
 		});
 	}

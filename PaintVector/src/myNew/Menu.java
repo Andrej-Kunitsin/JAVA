@@ -3,14 +3,12 @@ package myNew;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -20,9 +18,11 @@ public class Menu extends JMenuBar
 	JMenuItem itemLoad;
 	JMenuItem itemSave;
 	JMenuItem itemClose;
-	
-	public Menu(final Sets sets)
+	PanelDraw panel;
+
+	public Menu(PanelDraw panelDraw)
 	{
+		panel = panelDraw;
 		jMenu = new JMenu("File");
 
 		itemLoad = new JMenuItem("Load");
@@ -35,7 +35,7 @@ public class Menu extends JMenuBar
 		jMenu.add(itemClose);
 
 		add(jMenu);
-		
+
 		itemLoad.addActionListener(new ActionListener()
 		{
 			Serializ serializ = new Serializ();
@@ -51,8 +51,12 @@ public class Menu extends JMenuBar
 					File file = fileChooser.getSelectedFile();
 					if (file.getAbsolutePath().endsWith(".xml"))
 					{
-						sets.list = serializ.openXML(file);
-						sets.panelDraw.repaint();
+						List<PanelFigure> figures = serializ.openXML(file);
+						for (PanelFigure figure : figures)
+						{
+							panel.add(figure);
+						}
+						panel.repaint();
 					}
 				}
 			}
@@ -84,7 +88,7 @@ public class Menu extends JMenuBar
 						file = new File(fileChooser.getSelectedFile()
 								.getAbsolutePath() + "." + format);
 						serializ = new Serializ();
-						serializ.saveJSON(file, sets.list);
+						//serializ.saveJSON(file,sets.list);
 						break;
 
 					case "*.xml":
@@ -92,25 +96,25 @@ public class Menu extends JMenuBar
 						file = new File(fileChooser.getSelectedFile()
 								.getAbsolutePath() + "." + format);
 						serializ = new Serializ();
-						serializ.saveXML(file, sets.list);
+						//serializ.saveXML(file, sets.list);
 						break;
 					case "All Files":
 						file = fileChooser.getSelectedFile();
 						if (file.getAbsolutePath().endsWith(".xml"))
 						{
 							serializ = new Serializ();
-							serializ.saveXML(file, sets.list);
+						//	serializ.saveXML(file, sets.list);
 						} else if (file.getAbsolutePath().endsWith(".json"))
 						{
 							serializ = new Serializ();
-							serializ.saveJSON(file, sets.list);
+							//serializ.saveJSON(file, sets.list);
 						} else
 						{
 							throw new IllegalArgumentException();
 						}
 					}
 				}
-				
+
 			}
 		});
 

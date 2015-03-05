@@ -42,15 +42,7 @@ public class PanelButton extends JPanel implements ActionListener
 			sets.mFigure = Figures.Cicle;
 		} else if (e.getActionCommand().equals("Очистка"))
 		{
-			// sets.list.clear();
-			if (sets.list.size() != 0)
-			{
-				sets.list.remove(0);
-				sets.panelDraw.removeAll();
-				sets.panelDraw.revalidate();
-				sets.panelDraw.repaint();
-			}
-
+			
 		}
 	}
 }

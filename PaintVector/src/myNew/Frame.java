@@ -17,7 +17,7 @@ public class Frame extends JFrame
 		s.mFigure = Figures.Rectangl;
 		PanelDraw pd = new PanelDraw(s);
 		PanelButton pb = new PanelButton(s);
-		Menu menu = new Menu(s);
+		Menu menu = new Menu(pd);
 		setJMenuBar(menu);
 
 		pd.setBounds(200, 0, 400, 600);
