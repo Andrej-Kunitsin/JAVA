@@ -1,8 +1,5 @@
 package myNew;
 
-import java.util.List;
-
-public class Sets
-{
+public class Sets {
 	Figures mFigure = Figures.Cicle;
-	}
+}

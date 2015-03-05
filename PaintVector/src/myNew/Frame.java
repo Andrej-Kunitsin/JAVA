@@ -1,13 +1,10 @@
 package myNew;
 
 import javax.swing.JFrame;
-import javax.swing.JMenu;
 
-public class Frame extends JFrame
-{
+public class Frame extends JFrame {
 
-	public Frame()
-	{
+	public Frame() {
 		setLayout(null);
 		setTitle("App for add person");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
