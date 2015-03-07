@@ -2,17 +2,20 @@ package myNew;
 
 import javax.swing.JFrame;
 
-public class Frame extends JFrame {
+public class Frame extends JFrame
+{
+	private static final long serialVersionUID = 1L;
 
-	public Frame() {
+	public Frame()
+	{
 		setLayout(null);
 		setTitle("App for add person");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBounds(300, 150, 600, 670);
 
 		Sets s = new Sets();
-		s.mFigure = Figures.Rectangl;
 		PanelDraw pd = new PanelDraw(s);
+		s.mPanelDraw = pd;
 		PanelButton pb = new PanelButton(s);
 		Menu menu = new Menu(pd);
 		setJMenuBar(menu);

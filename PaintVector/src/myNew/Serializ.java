@@ -12,26 +12,34 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Serializ {
-	public Serializ() {
+public class Serializ
+{
+	public Serializ()
+	{
 	}
 
-	public void saveXML(File file, List<Component> list) {
+	public void saveXML(File file, List<Component> list)
+	{
 		FileOutputStream zz = null;
 		XMLEncoder xe = null;
-		try {
+		try
+		{
 			zz = new FileOutputStream(file);
 			xe = new XMLEncoder(zz);
 			xe.writeObject(list);
 			xe.flush();
-		} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e)
+		{
 			e.printStackTrace();
-		} finally {
+		} finally
+		{
 
-			try {
+			try
+			{
 				xe.close();
 				zz.close();
-			} catch (IOException e) {
+			} catch (IOException e)
+			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -39,23 +47,29 @@ public class Serializ {
 
 	}
 
-	public List<Component> openXML(File file) {
+	public List<Component> openXML(File file)
+	{
 		FileInputStream reader = null;
 		List<Component> list = null;
 		XMLDecoder decoder = null;
-		try {
+		try
+		{
 			reader = new FileInputStream(file);
 			decoder = new XMLDecoder(reader);
 			list = (ArrayList<Component>) decoder.readObject();
 
-		} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e)
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			try {
+		} finally
+		{
+			try
+			{
 				reader.close();
 				decoder.close();
-			} catch (IOException e) {
+			} catch (IOException e)
+			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -63,14 +77,17 @@ public class Serializ {
 		return list;
 	}
 
-	public void saveJSON(File file, List<PanelFigure> list) {
+	public void saveJSON(File file, List<PanelFigure> list)
+	{
 		FileWriter fileWriter;
-		try {
+		try
+		{
 			fileWriter = new FileWriter(file);
 			// Gson gson = new Gson();
 			// String string = gson.toJson(list);
 			// fileWriter.write(string);
-		} catch (IOException e) {
+		} catch (IOException e)
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
