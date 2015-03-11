@@ -87,7 +87,7 @@ public class PanelFigure extends JPanel implements MouseListener,
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		setFocusable(true);
-		new ResizePanel(this);
+		new ResizePanelButton(this);
 		repaint();
 	}
 
